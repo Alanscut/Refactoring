@@ -79,7 +79,7 @@ public class Customer {
         return result;
     }
 
-    private double amountFor(Rental each) {
+    /*private double amountFor(Rental each) {
         int thisAmount = 0;
         switch (each.getMovie().getPriceCode()) {
             case Movie.REGULAR:
@@ -99,5 +99,34 @@ public class Customer {
                 break;
         }
         return thisAmount;
+    }*/
+
+    /**
+     *  rename the local variable
+     *  excellent code should express its feature clearly by itself.
+     *  naming the variable is the key point of clear code.
+     * @param rental
+     * @return
+     */
+    private double amountFor(Rental rental) {
+        int result = 0;
+        switch (rental.getMovie().getPriceCode()) {
+            case Movie.REGULAR:
+                result += 2;
+                if (rental.getDaysRented() > 2) {
+                    result += (rental.getDaysRented() - 2) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE:
+                result += rental.getDaysRented() * 3;
+                break;
+            case Movie.CHILDRENS:
+                result += 1.5;
+                if (rental.getDaysRented() > 3) {
+                    result += (rental.getDaysRented() - 3) * 1.5;
+                }
+                break;
+        }
+        return result;
     }
 }
