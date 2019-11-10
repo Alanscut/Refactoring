@@ -58,7 +58,8 @@ public class Customer {
             }
             */
 
-            thisAmount = amountFor(each);
+//            thisAmount = amountFor(each);
+            thisAmount = each.getCharge();
             /**************************************************/
 
             // add frequent renter points
@@ -108,7 +109,8 @@ public class Customer {
      * @param rental
      * @return
      */
-    private double amountFor(Rental rental) {
+    // move this to Rental
+    /*private double amountFor(Rental rental) {
         int result = 0;
         switch (rental.getMovie().getPriceCode()) {
             case Movie.REGULAR:
@@ -128,5 +130,9 @@ public class Customer {
                 break;
         }
         return result;
+    }*/
+
+    private double amountFor(Rental rental) {
+        return rental.getCharge();
     }
 }
